@@ -4,13 +4,13 @@ import csv
 import re
 
 
-#### функция 1 ####
+#### функция 1 #### открываем файл
 with open("phonebook_raw.csv", encoding='utf-8') as f:
     rows = csv.reader(f, delimiter=",")
     contacts_list = list(rows)
 
 
-#### функция 2 ####
+#### функция 2 #### Создаем лист с информацией
 info_in_list = ''
 for i in contacts_list:
     info_in_list += '\n'
@@ -29,14 +29,11 @@ list.pop(0)
 list_number = []
 
 
-#### функция 3 ####
+#### функция 3 #### редактируем информацию 
 for i in list:
     info_in_list = (i.split(','))
     info_in_list.remove('')
     list_number.append(info_in_list)
-
-
-#### функция 4 ####
 for i in list_number:
     for info_in_list in list_number:
         try:
@@ -52,16 +49,13 @@ for i in list_number:
         except:
             pass
 text = ''
-
-
-#### функция 5 ####
 for i in list_number:
      if len(i) == 0:
           list_number.remove(i)
 list_number.sort()
 
 
-#### функция 6 ####
+#### функция 4 #### Закрываем файл
 with open("phonebook.csv", "w", encoding='utf-8') as f:
     datawriter = csv.writer(f, delimiter=',' )
     # Вместо contacts_list подставьте свой список
